@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przetworzenie raportu w formacie XML z systemu Fakturownia o typie: JPK_FA</title>
+    {% load static %}
+</head>
+<body>
+
+  <h1>Przetworzenie raportu w formacie XML z systemu Fakturownia o typie: JPK_FA</h1>
+
+  <form method="post" enctype="multipart/form-data" action="{% url 'process_file' %}">
+    {% csrf_token %}
+    <label for="file">Wybierz pliki:</label>
+    <input type="file" id="file" name="file" accept=".xml" multiple required>
+    <br>
+    <button type="submit">Przetwórz</button>
+  </form>
+
+  {% if file_path %}
+<!--    <p>Plik JPK_FA został przetworzony. Pobierz: <a href="{% url 'download_processed_file' %}" target="_self">{{ file_path }}</a></p>-->
+    <p>Plik JPK_FA został przetworzony.</p>
+  {% endif %}
+
+
+
+</body>
+</html>
